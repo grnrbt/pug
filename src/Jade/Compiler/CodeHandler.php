@@ -112,6 +112,11 @@ class CodeHandler extends CompilerUtils
 
             $innerCode = $host->innerCode($str, $name);
 
+            $valueArray = json_decode($start[0] . $innerCode[0] . $end[0], true);
+            if($valueArray) {
+                return var_export($valueArray, true);
+            }
+
             if (count($innerCode) > 1) {
                 $result = array_merge($result, array_slice($innerCode, 0, -1));
 
